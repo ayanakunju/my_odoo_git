@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--<templates id="template" xml:space="preserve">-->
+<!--<t t-inherit="owl_module.input_box" t-inherit-mode="extension" owl="1">-->
+<!--    <xpath expr="//div[hasClass('inputDiv')]" position="inside">-->
+<!--        <div class="d-flex flex-grow-1 align-items-center ">-->
+<!--            <button class="btn border-0 round-pill" t-on-click="onClickPoll">click here</button>-->
+<!--        </div>-->
+<!--    </xpath>-->
+<!--</t>-->
+<!--</templates>-->
+
+

@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_op_model,access.op.model,model_op_model,base.group_user,1,1,1,1
+access_consultation_model,access.consultation.model,model_consultation_model,base.group_user,1,1,1,1
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_prescription_tree" model="ir.ui.view">
+        <field name="name">consultation.model.tree</field>
+        <field name="model">consultation.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="patient_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_consultation_form" model="ir.ui.view">
+        <field name="name">consultation.model.form</field>
+        <field name="model">consultation.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="op_ticket"/>
+                    <field name="date"/>
+                    <field name="age"/>
+                    <field name="patient_id"/>
+                    <field name="doctor_id"/>
+                </group>
+                <notebook>
+                    <page string="Prescription">
+                        <field name="prescription"/>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="consult_action" model="ir.actions.act_window">
+        <field name="name">consultant</field>
+        <field name="res_model">consultation.model</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <menuitem id="counsultation_menu" name="Counsultation" action="consult_action" parent="reception_action"/>
+
+</odoo>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_lease_tree" model="ir.ui.view">
+        <field name="name">lease.tree</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence_number" required="0"/>
+                <field name="status"/>
+                <field name="tenant_id" string="Customer Name"/>
+
+
+            </tree>
+        </field>
+    </record>
+    <record id="lease_search" model="ir.ui.view">
+        <field name="name">lease.management.search</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="property_id"/>
+                <field name="status"/>
+                <field name="sequence_number"/>
+                <filter string="Rent" name="filter_rent" domain="[('status', '=', 'rent')]"/>
+                <filter string="Lease" name="filter_lease" domain="[('status', '=', 'lease')]"/>
+                <filter name="active" string="Archived"  domain="[('active', '=', False)]"/>
+                <group string="Group By">
+                    <filter string="Type" name="group_by_type" context="{'group_by' : 'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_lease_form" model="ir.ui.view">
+        <field name="name">lease.form</field>
+        <field name="model">lease.management</field>
+        <field name="arch" type="xml">
+            <form string="Lease">
+                <header>
+                    <button name="action_confirm" class="oe_highlight"
+                            string="Confirm" invisible="state not in ['draft','expired','returned']"
+                            type="object" help="Move property to Confirmed state"/>
+                    <button name="action_close" string="Close"
+                            invisible="state not in ['confirmed','expired','returned']"
+                            type="object" help="Move property to Closed state"/>
+                    <button name="action_return" string="Return"
+                            invisible="state not in ['draft','expired','confirmed']"
+                            type="object" help="Move property to Returned state"/>
+                    <button name="action_expire" string="Expired"
+                            invisible="state not in ['draft','confirmed','returned']"
+                            type="object" help="Move property to Expired state"/>
+                    <button name="action_reset_to_draft" string="Reset to draft"
+                            invisible="state in ['draft']"
+                            type="object" help="Move property to draft state"/>
+                    <button name="action_create_invoice" class="oe_highlight"
+                            string="Create Invoice" invisible="state not in ['confirmed']"
+                            type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,closed,returned,expired"/>
+                </header>
+                <sheet>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="object" name="action_view_invoice"
+                                icon="fa-pencil-square-o" invisible="invoice_count == 0">
+                            <field string="Invoices" name="invoice_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div>
+                        <field name="payment_state" invisible="1"/>
+                        <widget name="web_ribbon" title="Paid"
+                                invisible="payment_state not in ['paid']"/>
+                        <widget name="web_ribbon" title="Partial"
+                                invisible="payment_state  not in ['partial'] "/>
+                        <widget name="web_ribbon" title="Not Paid" bg_color="text-bg-danger"
+                                invisible="payment_state  not in ['not_paid'] "/>
+                    </div>
+                    <h1>
+                        <field name="sequence_number"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="tenant_id" widget="res_partner_many2one"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                   placeholder="Type to find a customer..." readonly="state in ['confirmed', 'closed']"
+                                   on_change="1" can_create="True" can_write="True" field_id="partner_id_0"/>
+                            <field name="status" string="Type" readonly="state in ['confirmed']"/>
+                        </group>
+                        <group>
+<!--                            <field name="date_start" string="Planned Date" widget="daterange"-->
+<!--                                   readonly="state not in ('draft', 'confirm')"-->
+<!--                                   options='{"end_date_field": "date", "always_range": "1"}'-->
+<!--                                   required="date_start or date"/>-->
+<!--                            <field name="date" invisible="1" required="date_start"/>-->
+                            <field name="date_start" string="Start Date"
+                                   readonly="state not in ('draft', 'confirm')"
+                                   required="date_start or date"/>
+                            <field name="date" string="End Date" required="date_start"
+                                   readonly="state not in ('draft', 'confirm')"/>
+                            <field name="duration" class="oe_inline" field_id="duration_0"/>
+                            <field name="company_id" readonly="state in ['confirmed']"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Order Lines" name="order_lines">
+                            <field name="order_line_ids" readonly="state not in ['draft']">
+                                <tree editable="bottom">
+                                    <field name="multiple_property_id" string="Properties"/>
+                                    <field name="duration" string="Quantity"/>
+                                    <field name="rental_amount" string="Rent/Lease Amount" on_change="1"/>
+                                    <field name="total_amount" string="Total Amount" on_change="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="lease_action" model="ir.actions.act_window">
+        <field name="name">Lease Management</field>
+        <field name="res_model">lease.management</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+</odoo>
+
+
+

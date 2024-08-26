@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="property_menu_action" name="Property Management" action="lease_action"/>
+    <menuitem id="lease_menu_action" name="Management" action="lease_action" parent="property_menu_action"/>
+    <menuitem id="lease_menu" name="Lease " action="lease_action" parent="lease_menu_action"/>
+    <menuitem id="configuration_menu" name="Configuration" action="property_action" parent="property_menu_action"/>
+    <menuitem id="property_menu_root" name="Property" action="property_action" parent="configuration_menu"/>
+</odoo>
