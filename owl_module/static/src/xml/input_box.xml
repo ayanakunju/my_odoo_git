@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<templates id="template" xml:space="preserve">
+    <t t-name="owl_module.input_box">
+        <div class="inputDiv">
+        <input type="text" name="db" value=" " class="form-control"/>
+        <button class="oe_stat_button">click here</button>
+        </div>
+    </t>
+</templates>

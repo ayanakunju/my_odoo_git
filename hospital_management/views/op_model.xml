@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_hospital_tree" model="ir.ui.view">
+        <field name="name">op.model.tree</field>
+        <field name="model">op.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="op_number"/>
+                <field name="patient_id"/>
+                <field name="token_no"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_form" model="ir.ui.view">
+        <field name="name">op.model.form</field>
+        <field name="model">op.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_done" class="oe_highlight" invisible="state not in ('draft')" string="Confirm"
+                            type="object" help="Move Appointment to Confirmed state"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+
+                </header>
+
+                <sheet>
+                    <h1>
+                        <field name="op_number"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="age"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="token_no"/>
+                            <field name="doctor_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="op_action" model="ir.actions.act_window">
+        <field name="name">OP</field>
+        <field name="res_model">op.model</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <menuitem id="op_menu" name='OP' action="op_action" parent="reception_action"/>
+
+
+</odoo>
