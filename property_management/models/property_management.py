@@ -8,7 +8,7 @@ class PropertyManagement(models.Model):
     _inherit = 'mail.thread'
     _rec_name = 'property_name'
 
-    property_name = fields.Text(required=True )
+    property_name = fields.Text(required=True)
     country_id = fields.Many2one('res.country')
     state_id = fields.Many2one('res.country.state')
     street = fields.Char(string='Street')
@@ -27,6 +27,16 @@ class PropertyManagement(models.Model):
                                         ('leased', 'Leased'), ('sold', 'Sold')
                                         ], string='Status', required=True, copy=False, tracking=True, default='draft')
     property_count = fields.Integer(compute='_compute_count')
+    user_id = fields.Many2one('res.users', 'Current User', default=lambda self: self.env.user.id)
+    group_id = fields.Many2one('res.groups', string='Group')
+    is_readonly = fields.Boolean(compute='_compute_is_readonly')
+
+    @api.depends('group_id')
+    def _compute_is_readonly(self):
+        self.is_readonly = True
+        for record in self:
+            if self.env.user.has_group('property_management.property_manager_access'):
+                record.is_readonly = False
 
     def _compute_count(self):
         for record in self:

@@ -59,6 +59,7 @@
                                 <label for="street" string="Address"/>
                             </b>
                             <div class="o_address_format">
+
                                 <field name="street" placeholder="Street..." class="o_address_street"/>
                                 <field name="street2" placeholder="Street 2..." class="o_address_street"/>
                                 <field name="city" placeholder="City" class="o_address_city"/>
@@ -68,7 +69,11 @@
                                 <field name="country_id" placeholder="Country" class="o_address_country"
                                        options='{"no_open": True, "no_create": True}'/>
                             </div>
-                            <field name="owner_id"/>
+                            <field name="group_id" type="many2one" comodel_name="res.groups" string="Group"
+                                   invisible="1"/>
+                            <field name="is_readonly" type="boolean" invisible="1" compute="_compute_is_readonly"/>
+                            <field name="owner_id" readonly="is_readonly"
+                                   groups="property_management.property_user_access,property_management.property_manager_access"/>
                             <field name="can_be_sold"/>
                         </group>
                         <group>
@@ -96,17 +101,17 @@
         <field name="view_mode">tree,form,kanban</field>
     </record>
 
- <record id="owned_property_form" model="ir.ui.view">
+    <record id="owned_property_form" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-            <page name="Owned_property" string="Owned Property">
-                <field name="owned_property_ids"/>
-            </page>
+                <page name="Owned_property" string="Owned Property">
+                    <field name="owned_property_ids"/>
+                </page>
             </xpath>
-            </field>
+        </field>
     </record>
 </odoo>
 

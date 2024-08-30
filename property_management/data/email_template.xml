@@ -6,16 +6,17 @@
             <field name="model_id" ref="property_management.model_lease_management"/>
             <field name="subject">{{ object.company_id.name }}</field>
             <field name="email_from">{{ object.company_id.email }}</field>
-            <field name="partner_to">{{ object.tenant_id.id }}</field>
             <field name="description">Confirmed</field>
             <field name="body_html" type="html">
                 <div>
-                    <p>Hello,
+                    <p>Dear Customer,
                         <br/>
                         <br/>
                         This is your Confirmation Email!!
                         <br/>
-                        Your Rent/Lease request will be confirmed<br/><br/>
+                        Your Rent/Lease request will be confirmed
+                        <br/>
+                        <br/>
                         Thankyou!
                         <br/>
                         <br/>
@@ -32,13 +33,14 @@
             <field name="description">Expired</field>
             <field name="body_html" type="html">
                 <div>
-                    <p>Hello,{{ object.tenant_id.id }},
+                    <p>Dear Customer,
                         <br/>
                         <br/>
                         This is your Expiry Email!!
                         <br/>
                         your rent/lease is about to expire
-                        <br/><br/>
+                        <br/>
+                        <br/>
                         Thankyou!
                         <br/>
                     </p>
@@ -54,13 +56,14 @@
             <field name="description">Closed</field>
             <field name="body_html" type="html">
                 <div>
-                    <p>Hello,{{ object.tenant_id.id }},
+                    <p>Dear Customer,
                         <br/>
                         <br/>
                         This is your Closing Email!!
                         <br/>
                         Your Rent/Lease request will be closed!!!
-                        <br/><br/>
+                        <br/>
+                        <br/>
                         Thankyou!
                         <br/>
                         <br/>
@@ -69,7 +72,7 @@
             </field>
         </record>
         <record id="payment_followups_template" model="mail.template">
-            <field name="name">RENT/LEASE MANAGEMENT</field>
+            <field name="name">PAYMENT FOLLOWUPS</field>
             <field name="model_id" ref="property_management.model_lease_management"/>
             <field name="subject">{{ object.company_id.name }}</field>
             <field name="email_from">{{ object.company_id.email }}</field>
@@ -83,14 +86,16 @@
                         This is your Reminder Email!!
                         <br/>
                         You have pending payments...
-                        your last date for payment is ended , please make sure to do the payment
-                        <br/><br/>
+                        your last date for payment is ended , please make sure that the payment is done
+                        <br/>
+                        <br/>
                         Thankyou!
                         <br/>
                         <br/>
                     </p>
                 </div>
             </field>
+            <field name="auto_delete" eval="False"/>
         </record>
     </data>
 </odoo>

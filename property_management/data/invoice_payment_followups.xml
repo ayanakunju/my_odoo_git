@@ -2,13 +2,12 @@
 <odoo>
     <record id="ir_cron_payment_followups" model="ir.cron">
         <field name="name">Invoice Payment Followups</field>
-        <field name="active" eval="True"/>
+        <field name="model_id" ref="model_lease_management"/>
+        <field name="state">code</field>
+        <field name="code">model._auto_followup_payment()</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="model_id" ref="model_lease_management"/>
-        <field name="state">code</field>
-        <field name="code">model._followup_payment()</field>
+        <field name="active" eval="True"/>
     </record>
 </odoo>
-

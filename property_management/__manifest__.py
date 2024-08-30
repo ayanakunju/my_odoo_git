@@ -10,6 +10,8 @@
     """,
 
     'data': [
+        'security/property_management_groups.xml',
+        'security/property_management_security.xml',
         'security/ir.model.access.csv',
         'views/property_management_views.xml',
         'views/lease_management_view.xml',

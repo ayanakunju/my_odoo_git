@@ -8,8 +8,6 @@
                 <field name="sequence_number" required="0"/>
                 <field name="status"/>
                 <field name="tenant_id" string="Customer Name"/>
-
-
             </tree>
         </field>
     </record>
@@ -23,7 +21,7 @@
                 <field name="sequence_number"/>
                 <filter string="Rent" name="filter_rent" domain="[('status', '=', 'rent')]"/>
                 <filter string="Lease" name="filter_lease" domain="[('status', '=', 'lease')]"/>
-                <filter name="active" string="Archived"  domain="[('active', '=', False)]"/>
+                <filter name="active" string="Archived" domain="[('active', '=', False)]"/>
                 <group string="Group By">
                     <filter string="Type" name="group_by_type" context="{'group_by' : 'status'}"/>
                 </group>
@@ -39,20 +37,22 @@
                     <button name="action_confirm" class="oe_highlight"
                             string="Confirm" invisible="state not in ['draft','expired','returned']"
                             type="object" help="Move property to Confirmed state"/>
+                    <button string="Approve" name="action_approve" type="object" class="oe_highlight" invisible="state in ['approved']"
+                            groups="property_management.property_manager_access"/>
                     <button name="action_close" string="Close"
-                            invisible="state not in ['confirmed','expired','returned']"
+                            invisible="state not in ['confirmed','expired','returned','approved']"
                             type="object" help="Move property to Closed state"/>
                     <button name="action_return" string="Return"
-                            invisible="state not in ['draft','expired','confirmed']"
+                            invisible="state not in ['draft','expired','confirmed','approved']"
                             type="object" help="Move property to Returned state"/>
                     <button name="action_expire" string="Expired"
-                            invisible="state not in ['draft','confirmed','returned']"
+                            invisible="state not in ['draft','confirmed','returned','approved']"
                             type="object" help="Move property to Expired state"/>
                     <button name="action_reset_to_draft" string="Reset to draft"
                             invisible="state in ['draft']"
                             type="object" help="Move property to draft state"/>
                     <button name="action_create_invoice" class="oe_highlight"
-                            string="Create Invoice" invisible="state not in ['confirmed']"
+                            string="Create Invoice" invisible="state not in ['approved']"
                             type="object"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,closed,returned,expired"/>
                 </header>
@@ -84,11 +84,6 @@
                             <field name="status" string="Type" readonly="state in ['confirmed']"/>
                         </group>
                         <group>
-<!--                            <field name="date_start" string="Planned Date" widget="daterange"-->
-<!--                                   readonly="state not in ('draft', 'confirm')"-->
-<!--                                   options='{"end_date_field": "date", "always_range": "1"}'-->
-<!--                                   required="date_start or date"/>-->
-<!--                            <field name="date" invisible="1" required="date_start"/>-->
                             <field name="date_start" string="Start Date"
                                    readonly="state not in ('draft', 'confirm')"
                                    required="date_start or date"/>
@@ -124,6 +119,5 @@
         <field name="view_mode">tree,form,kanban</field>
     </record>
 </odoo>
-
 
 
