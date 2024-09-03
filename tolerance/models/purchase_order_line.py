@@ -1,14 +1,38 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
+
+
+class PurchaseOrder(models.Model):
+    _inherit = 'purchase.order.line'
+
+    tolerance_percentage = fields.Float(string='Tolerance  (%)')
+
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    def action_confirm(self):
+        res = super(SaleOrder, self).action_confirm()
+        for order in self:
+            for line in order.order_line:
+                purchase_lines = self.env['purchase.order.line'].search([('sale_line_id', '=', line.id)])
+                for purchase_line in purchase_lines:
+                    purchase_line.tolerance_percentage = line.tolerance_percentage
+        return res
+
+
+
+# class SaleOrder(models.Model):
+#     _inherit = 'sale.order'
 #
-#
-#
-#
-# class PurchaseOrder(models.Model):
-#   _inherit = 'purchase.order'
-#
-#   tolerance_percentage = fields.Float(string='Tolerance Percentage', related='sale_order_id.tolerance_percentage')
+#     def action_confirm(self):
+#         super(SaleOrder, self).action_confirm()
+#         for order in self:
+#             for line in order.order_line:
+#                 purchase_lines = self.env['purchase.order.line'].search([('sale_line_id', '=', line.id)])
+#                 for purchase_line in purchase_lines:
+#                     purchase_line.x_custom_field = line.x_custom_field
 
 
 
@@ -23,7 +47,6 @@
 #         self.tolerance_percent = self.sale_order_id.partner_id.tolerance_percent
 #
 #    tolerance_percent = fields.Float(string='Tolerance (%)', default=0)
-
 
 
 
@@ -162,3 +185,74 @@
 #  </xpath>
 #    </field>
 #   </record>
+
+
+#
+# from odoo import models, fields, api
+#
+# class WarningMessageWizard(models.TransientModel):
+#     _name = 'warning.message.wizard'
+#     _description = 'Warning Message Wizard'
+#
+#     default_message = fields.Text(string='Message')
+#     default_accept_button = fields.Char(string='Accept Button')
+#     default_reject_button = fields.Char(string='Reject Button')
+#     default_move_ids = fields.Many2many('stock.move', string='Moves')
+#
+#     def action_accept(self):
+#         for move in self.default_move_ids:
+#             move.picking_id.button_validate()
+#         return {'type': 'ir.actions.act_window_close'}
+#
+#     def action_reject(self):
+#         return {'type': 'ir.actions.act_window_close'}
+# class StockPicking(models.Model):
+#     _inherit = 'stock.picking'
+#
+#     def button_validate(self):
+#         for record in self:
+#             if record.move_ids_without_package:
+#                 sale_order = self.env['sale.order'].search([('name', '=', record.origin)], limit=1)
+#                 if sale_order:
+#                     tolerance = sale_order.order_line.tolerance_percentage
+#                     out_of_range_moves = []
+#                     for move in record.move_ids_without_package:
+#                         min_qty = move.product_uom_qty - tolerance
+#                         max_qty = move.product_uom_qty + tolerance
+#                         if move.quantity < min_qty or move.quantity > max_qty:
+#                             out_of_range_moves.append(move)
+#
+#                     if out_of_range_moves:
+#                         return {
+#                             'type': 'ir.actions.act_window',
+#                             'res_model': 'warning.message.wizard',
+#                             'view_mode': 'form',
+#                             'view_id': self.env.ref('tolerance.view_warning_message_wizard_form').id,
+#                             'target': 'new',
+#                             'context': {
+#                                 'default_message': 'Some quantities are out of the acceptable range. Do you want to accept or reject?',
+#                                 'default_accept_button': 'Accept',
+#                                 'default_reject_button': 'Reject',
+#                                 'default_move_ids': [(6, 0, [move.id for move in out_of_range_moves])],
+#                             }
+#                         }
+#         return super(StockPicking, self).button_validate()
+# <odoo>
+#     <record id="view_warning_message_wizard_form" model="ir.ui.view">
+#         <field name="name">warning.message.wizard.form</field>
+#         <field name="model">warning.message.wizard</field>
+#         <field name="arch" type="xml">
+#             <form string="Warning">
+#                 <group>
+#                     <field name="default_message" readonly="1"/>
+#                 </group>
+#                 <footer>
+#                     <button name="action_accept" type="object" string="Accept" class="btn-primary"/>
+#                     <button name="action_reject" type="object" string="Reject" class="btn-secondary"/>
+#                 </footer>
+#             </form>
+#         </field>
+#     </record>
+# </odoo>
+#
+#

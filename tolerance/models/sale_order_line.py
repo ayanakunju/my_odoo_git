@@ -7,13 +7,20 @@ from odoo import models, fields, api
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    # tolerance_percentage = fields.Float(related='order_partner_id.tolerance_percent', string='Tolerance')
-    tolerance_percentage = fields.Float(string='Tolerance', default=0)
+    tolerance_percentage = fields.Float(string='Tolerance (%)', default=0)
 
     @api.onchange('order_id')
     def onchange_order_id(self):
         if self.order_id:
             self.tolerance_percentage = self.order_id.partner_id.tolerance_percent
+
+
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+
+
 
 
 # class StockPicking(models.Model):

@@ -14,7 +14,7 @@
         'views/res_partner_views.xml',
         'views/sale_order_line_views.xml',
         'views/purchase_order_line_views.xml',
-        'views/warning_message_wizard.xml',
+        'wizard/warning_message_wizard.xml',
     ],
     'application': True,
 }

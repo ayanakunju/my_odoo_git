@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='category_id']" position="after">
-                <field name="tolerance_percent" widget="percentage"/>
+                <field name="tolerance_percent" />
             </xpath>
         </field>
     </record>
