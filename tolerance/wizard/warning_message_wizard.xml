@@ -8,7 +8,7 @@
                  <field name="message" string="Quantity is out of the acceptable range. Do you want to accept or reject?" readonly="1"/>
                  <footer>
                      <button string="Accept" type="object" name="action_accept" class="btn-primary"/>
-                     <button string="Don't Accept" special="cancel" name="action_reject" class="btn-danger" />
+                     <button string="Don't Accept" type="object" name="action_reject" class="btn-danger" />
                  </footer>
                  <sheet>
                  </sheet>
