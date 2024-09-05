@@ -4,14 +4,22 @@ from odoo import models, fields,api
 
 
 class PurchaseOrderLine(models.Model):
+    """model PurchaseOrderLine is used to inherit the purchase order line and adding the tolerance filed of the
+    corresponding sale order line"""
     _inherit = 'purchase.order.line'
 
-    tolerance_percentage = fields.Float(string='Tolerance  (%)')
+    tolerance_percentage = fields.Float(string='Tolerance  (%)',help="tolerance percentage")
 
-    # @api.model
-    # def create(self, vals):
-    #     if 'sale_order_line_id' in vals:
-    #         sale_order_line = self.env['sale.order.line'].browse(vals['sale_order_line_id'])
-    #         vals['tolerance_percentage'] = sale_order_line.tolerance_percentage
-    #     return super(PurchaseOrderLine, self).create(vals)
+    def _prepare_purchase_order_line_from_procurement(self, product_id, product_qty, product_uom, company_id,
+                                                      values,po):
+        """ for adding the tolerance percentage inside the purchase order line"""
+        res = super()._prepare_purchase_order_line_from_procurement(product_id, product_qty, product_uom, company_id,
+                                                                    values, po)
+        res['tolerance_percentage'] = values.get('tolerance_percentage', False)
+        return res
+
+
+
+
+
 

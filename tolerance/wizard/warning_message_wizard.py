@@ -12,6 +12,7 @@ class WarningMessageWizard(models.TransientModel):
     default_move_id = fields.Many2one('stock.move', string='Moves')
 
     def action_accept(self):
+        """accept button function for the wizard """
         picking_id = self.env.context.get('active_id')
         if picking_id:
             picking = self.env['stock.picking'].browse(picking_id)
@@ -20,4 +21,5 @@ class WarningMessageWizard(models.TransientModel):
         return {'type': 'ir.actions.act_window_close'}
 
     def action_reject(self):
+        """action_reject function for the don't accept button"""
         return {'type': 'ir.actions.act_window_close'}

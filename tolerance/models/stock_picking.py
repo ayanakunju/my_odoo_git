@@ -4,9 +4,13 @@ from odoo import models
 
 
 class StockPicking(models.Model):
+    """stockPicking module is used to inherit the stock picking model for super the button validate
+     function inside the sale order"""
     _inherit = 'stock.picking'
 
     def button_validate(self):
+        """when validate the button, based on the product quantity wizard will appear including the accept and
+        don't accept button"""
         for record in self:
             if self.env.context.get('validate_from_wizard'):
                 return super().button_validate()
@@ -27,7 +31,8 @@ class StockPicking(models.Model):
                                     'target': 'new',
                                     'context': {
                                         'active_id': record.id,
-                                        'default_message': 'Quantity is out of the acceptable range. Do you want to accept or reject?',
+                                        'default_message': 'Quantity is out of the acceptable range.'
+                                                           ' Do you want to accept or reject?',
                                         'default_move_id': move.id,
                                     }
                                 }
