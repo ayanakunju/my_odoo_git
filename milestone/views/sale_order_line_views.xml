@@ -15,9 +15,16 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" icon="fa-tasks" string="Project"
+                        name="action_get_project" invisible="state in ['draft']"/>
+            </div>
             <xpath expr="//header" position="inside">
-                <button type="object" name="action_create_project" string="Create Project"
-                        invisible="state  in ['confirmed']" class="btn-primary"/>
+                <field name="project_created" type="boolean" invisible="1"/>
+                <button name="action_create_project" type="object" string="Create Project" class="btn-primary"
+                        invisible="project_created != False or state in ['draft','cancel'] "/>
+                <button name="action_update_project" type="object" string="Update Project" class="btn-primary"
+                        invisible="project_created != True or state in ['cancel']"/>
             </xpath>
         </field>
     </record>
