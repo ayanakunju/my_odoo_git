@@ -236,4 +236,3 @@ class LeaseManagement(models.Model):
             template = self.env.ref('property_management.payment_followups_template')
             template.sudo().send_mail(lease.id, force_send=True)
             lease.message_post(body=_('Payment Reminder sent to %s') % lease.sequence_number)
-

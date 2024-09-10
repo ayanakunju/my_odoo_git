@@ -72,8 +72,9 @@
                             <field name="group_id" type="many2one" comodel_name="res.groups" string="Group"
                                    invisible="1"/>
                             <field name="is_readonly" type="boolean" invisible="1" compute="_compute_is_readonly"/>
-                            <field name="owner_id" readonly="is_readonly"
-                                   groups="property_management.property_user_access,property_management.property_manager_access"/>
+                            <field name="owner_id"/>
+<!--                            readonly="is_readonly"-->
+<!--                                   groups="property_management.property_user_access,property_management.property_manager_access"/>-->
                             <field name="can_be_sold"/>
                         </group>
                         <group>
@@ -100,11 +101,10 @@
         <field name="res_model">property.management</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>
-
     <record id="owned_property_form" model="ir.ui.view">
-        <field name="name">res.partner.form.inherit</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="name">hr.employee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page name="Owned_property" string="Owned Property">

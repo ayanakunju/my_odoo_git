@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
+from odoo import models, fields, api
 
 
 class PropertyManagement(models.Model):
@@ -20,7 +20,7 @@ class PropertyManagement(models.Model):
     can_be_sold = fields.Boolean()
     legal_amount = fields.Float(required=True)
     rent = fields.Float(required=True)
-    owner_id = fields.Many2one('res.partner')
+    owner_id = fields.Many2one('hr.employee',string='Owner')
     description = fields.Text(string='Description')
     management_id = fields.Many2one('lease.management', )
     state = fields.Selection(selection=[('draft', 'Draft'), ('rented', 'Rented'),
@@ -54,7 +54,7 @@ class PropertyManagement(models.Model):
         }
 
 
-class ResPartner(models.Model):
-    _inherit = 'res.partner'
+class HrEmployee(models.Model):
+    _inherit = 'hr.employee'
 
     owned_property_ids = fields.One2many('property.management', 'owner_id', string='Owned Properties')

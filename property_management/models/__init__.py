@@ -1,2 +1,6 @@
 # -*- coding: utf-8 -*-
-from . import property_management,lease_management,account_move,multiple_property
+
+from . import property_management
+from . import lease_management
+from . import account_move
+from . import multiple_property

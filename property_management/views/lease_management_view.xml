@@ -37,8 +37,8 @@
                     <button name="action_confirm" class="oe_highlight"
                             string="Confirm" invisible="state not in ['draft','expired','returned']"
                             type="object" help="Move property to Confirmed state"/>
-                    <button string="Approve" name="action_approve" type="object" class="oe_highlight" invisible="state in ['approved']"
-                            groups="property_management.property_manager_access"/>
+                    <button string="Approve" name="action_approve" type="object" class="oe_highlight" invisible="state in ['approved']"/>
+<!--                            groups="property_management.property_manager_access"/>-->
                     <button name="action_close" string="Close"
                             invisible="state not in ['confirmed','expired','returned','approved']"
                             type="object" help="Move property to Closed state"/>
