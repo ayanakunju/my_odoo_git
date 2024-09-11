@@ -90,6 +90,7 @@
                             <field name="date" string="End Date" required="date_start"
                                    readonly="state not in ('draft', 'confirm')"/>
                             <field name="duration" class="oe_inline" field_id="duration_0"/>
+                            <field name="due_date" string="Due Date"/>
                             <field name="company_id" readonly="state in ['confirmed']"/>
                         </group>
                     </group>

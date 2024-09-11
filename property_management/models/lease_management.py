@@ -17,6 +17,7 @@ class LeaseManagement(models.Model):
     tenant_id = fields.Many2one('res.partner', required=True)
     legal_amount = fields.Float(string="Legal Amount")
     total_amount = fields.Float(related='property_id.total_amount')
+    due_date = fields.Datetime(string='Due Date', required=True)
     company_id = fields.Many2one('res.company', string='company', default=lambda self: self.env.company)
     date_start = fields.Datetime(string='Start Date', required=True)
     date = fields.Datetime(string='Expiration Date', tracking=True, required=True)
