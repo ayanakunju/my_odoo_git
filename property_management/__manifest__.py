@@ -2,7 +2,7 @@
 {
     'name': "Property Management",
     'version': '17.0.3.0.0',
-    'depends': ['base', 'contacts', 'mail', 'account', 'hr'],
+    'depends': ['base', 'web', 'contacts', 'mail', 'account', 'hr'],
     'author': "Author Name",
     'category': 'Category',
     'description': """
@@ -12,11 +12,11 @@
     'data': [
         'security/ir.model.access.csv',
         'views/property_management_views.xml',
+        'report/lease_management_template.xml',
         'report/lease_management_report.xml',
         'wizard/pdf_message_wizard.xml',
         'views/lease_management_view.xml',
         'views/property_management_menu.xml',
-        'report/lease_management_template.xml',
         'data/property_management_sequence.xml',
         'data/property_management_demo.xml',
         'data/email_template.xml',

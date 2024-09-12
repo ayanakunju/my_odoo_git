@@ -17,11 +17,10 @@ class LeaseManagement(models.Model):
     tenant_id = fields.Many2one('res.partner', required=True)
     legal_amount = fields.Float(string="Legal Amount")
     total_amount = fields.Float(related='property_id.total_amount')
-    due_date = fields.Datetime(string='Due Date', required=True)
     company_id = fields.Many2one('res.company', string='company', default=lambda self: self.env.company)
     date_start = fields.Datetime(string='Start Date', required=True)
     date = fields.Datetime(string='Expiration Date', tracking=True, required=True)
-    duration = fields.Integer(compute='_compute_total_days')
+    duration = fields.Integer(compute='_compute_total_days', store=True)
     state = fields.Selection(selection=[('draft', 'Draft'), ('approved', 'Approved'),('confirmed', 'Confirmed'),
                                         ('closed', 'Closed'), ('returned', 'Returned'), ('expired', 'Expired'),
                                         ], string='Status', required=True, copy=False, tracking=True, default='draft')
@@ -47,6 +46,7 @@ class LeaseManagement(models.Model):
 
     @api.depends('date_start', 'date', 'duration')
     def _compute_total_days(self):
+        print('sss')
         """" Calculate the total  duration"""
         for record in self:
             if record.date_start and record.date:

@@ -3,7 +3,7 @@
     <data>
         <record id="lease_management_confirm_template" model="mail.template">
             <field name="name">RENT/LEASE MANAGEMENT</field>
-            <field name="model_id" ref="property_management.model_lease_management"/>
+            <field name="model_id" ref="model_lease_management"/>
             <field name="subject">{{ object.company_id.name }}</field>
             <field name="email_from">{{ object.company_id.email }}</field>
             <field name="description">Confirmed</field>

@@ -1,60 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
-        <template id="lease_management_report">
-            <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">
-                        <div class="page">
-                            <div class="text-center">
-                                <h1>Lease Management</h1>
-                            </div>
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th>Property</th>
-                                        <th>Owner Name</th>
-                                        <th>Type</th>
-                                        <th>Tenant Name</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr t-foreach="doc_data['report_data']" t-as="line">
-                                        <td>
-                                            <span t-field="line.property_name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.owner_name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.type"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.tenant_name"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.date_start"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.date"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.rental_amount"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="line.state"/>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </t>
-                </t>
+    <template id="lease_management_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h1>Lease Management</h1>
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr><h2>
+                                <th>Tenant</th>
+                                <th>State</th>
+                                <th>Status</th>
+                                <th>Owner Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Property</th>
+                                <th>Amount</th>
+                            </h2>
+                            </tr>
+                        </thead>
+                        <t t-foreach="data" t-as="line">
+                            <tr>
+                                <td>
+                                    <span t-esc="line['tenant']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['state']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['status']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['owner']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['start_date']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['end_date']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['property_name']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['rental_amount']"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
             </t>
-        </template>
-    </data>
+        </t>
+    </template>
 </odoo>

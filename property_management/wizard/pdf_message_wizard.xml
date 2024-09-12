@@ -6,13 +6,17 @@
         <field name="arch" type="xml">
             <form string="Lease Management">
                 <group>
+                <group>
                     <field name="from_date"/>
                     <field name="to_date"/>
                     <field name="state"/>
-                    <field name="tenant_id" options='{"no_create": True}'/>
+                    <field name="tenant_ids" options='{"no_create": True}' widget="many2many_tags"/>
+                </group>
+                <group>
                     <field name="owner_id" options='{"no_create": True}'/>
-                    <field name="type"/>
+                    <field name="status"/>
                     <field name="property_id" options='{"no_create": True}'/>
+                </group>
                 </group>
                 <footer>
                     <button string=" PDF Print" type="object" name="print_report" class="btn-primary"/>
@@ -28,3 +32,4 @@
         <field name="target">new</field>
     </record>
 </odoo>
+
