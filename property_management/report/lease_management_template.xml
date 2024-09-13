@@ -9,25 +9,22 @@
                     </div>
                     <table class="table table-condensed">
                         <thead>
-                            <tr><h2>
-                                <th>Tenant</th>
-                                <th>State</th>
-                                <th>Status</th>
-                                <th>Owner Name</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Property</th>
-                                <th>Amount</th>
-                            </h2>
+                            <tr>
+                                <h2>
+                                    <th>Tenant</th>
+                                    <th>Status</th>
+                                    <th>Owner Name</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Property</th>
+                                    <th>Amount</th>
+                                </h2>
                             </tr>
                         </thead>
                         <t t-foreach="data" t-as="line">
                             <tr>
                                 <td>
                                     <span t-esc="line['tenant']"/>
-                                </td>
-                                <td>
-                                    <span t-esc="line['state']"/>
                                 </td>
                                 <td>
                                     <span t-esc="line['status']"/>

@@ -4,7 +4,7 @@
     <menuitem id="lease_menu_action" name="Management" action="lease_action" parent="property_menu_action"/>
     <menuitem id="lease_menu" name="Lease " action="lease_action" parent="lease_menu_action"/>
     <menuitem id="report_menu" name="Reporting"  action="lease_action" parent="property_menu_action"/>
-    <menuitem id="pdf_report_menu" name="PDF" action="action_view_wizard" parent="report_menu"/>
+    <menuitem id="pdf_report_menu" name="Lease Management Report" action="action_view_wizard" parent="report_menu"/>
     <menuitem id="configuration_menu" name="Configuration" action="property_action" parent="property_menu_action"/>
     <menuitem id="property_menu_root" name="Property" action="property_action" parent="configuration_menu"/>
 </odoo>

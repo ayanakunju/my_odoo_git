@@ -23,5 +23,11 @@
         'data/lease_expiry_data.xml',
         'data/invoice_payment_followups.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'property_management/static/src/js/action_manager.js',
+        ]
+    },
     'application': True,
 }
+
