@@ -2,7 +2,7 @@
 {
     'name': "Property Management",
     'version': '17.0.3.0.0',
-    'depends': ['base', 'web', 'contacts', 'mail', 'account', 'hr'],
+    'depends': ['base', 'web', 'contacts', 'mail', 'account', 'hr','website'],
     'author': "Author Name",
     'category': 'Category',
     'description': """
@@ -17,6 +17,8 @@
         'wizard/pdf_message_wizard.xml',
         'views/lease_management_view.xml',
         'views/property_management_menu.xml',
+        'views/website_property_management.xml',
+        'views/website_template.xml',
         'data/property_management_sequence.xml',
         'data/property_management_demo.xml',
         'data/email_template.xml',
@@ -30,4 +32,3 @@
     },
     'application': True,
 }
-

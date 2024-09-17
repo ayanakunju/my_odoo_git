@@ -46,7 +46,6 @@ class LeaseManagement(models.Model):
 
     @api.depends('date_start', 'date', 'duration')
     def _compute_total_days(self):
-        print('sss')
         """" Calculate the total  duration"""
         for record in self:
             if record.date_start and record.date:
