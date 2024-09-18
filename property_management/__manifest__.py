@@ -19,6 +19,7 @@
         'views/property_management_menu.xml',
         'views/website_property_management.xml',
         'views/website_template.xml',
+        'views/redirect_template.xml',
         'data/property_management_sequence.xml',
         'data/property_management_demo.xml',
         'data/email_template.xml',
@@ -28,7 +29,11 @@
     'assets': {
         'web.assets_backend': [
             'property_management/static/src/js/action_manager.js',
+        ],
+        'web.assets_frontend':[
+            'property_management/static/src/css/website.css',
         ]
+
     },
     'application': True,
 }

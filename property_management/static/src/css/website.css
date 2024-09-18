@@ -1,0 +1,39 @@
+/*
+Version: 3.5.1 Timestamp: Tue Jul 22 18:58:56 EDT 2014
+*/
+
+.image {
+    height:2px;
+    width:2px;
+    margin-left:800px;
+    margin-right:300px;
+}
+.property_image {
+    width:400px;
+    height:200px;
+}
+
+.heading{
+    margin-bottom:40px;
+    margin-top:30px;
+}
+
+.website_form{
+    width:800px;
+}
+.col-form-label col-sm-auto s_website_form_label,
+.s_website_form_label{
+    width: 200px;
+}
+
+.form-group col-12 s_website_form_field s_website_form_required,
+.form-group mb-2 s_website_form_field s_website_form_required{
+     margin-bottom:20px;
+}
+.submit{
+    margin-bottom: 30px;
+}
+
+.s_website_form_label_content{
+    padding-top: 9px;
+}

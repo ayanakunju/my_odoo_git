@@ -18,8 +18,8 @@ class LeaseManagement(models.Model):
     legal_amount = fields.Float(string="Legal Amount")
     total_amount = fields.Float(related='property_id.total_amount')
     company_id = fields.Many2one('res.company', string='company', default=lambda self: self.env.company)
-    date_start = fields.Datetime(string='Start Date', required=True)
-    date = fields.Datetime(string='Expiration Date', tracking=True, required=True)
+    date_start = fields.Date(string='Start Date', required=True)
+    date = fields.Date(string='Expiration Date', tracking=True, required=True)
     duration = fields.Integer(compute='_compute_total_days', store=True)
     state = fields.Selection(selection=[('draft', 'Draft'), ('approved', 'Approved'),('confirmed', 'Confirmed'),
                                         ('closed', 'Closed'), ('returned', 'Returned'), ('expired', 'Expired'),
@@ -49,8 +49,8 @@ class LeaseManagement(models.Model):
         """" Calculate the total  duration"""
         for record in self:
             if record.date_start and record.date:
-                start_date = datetime.strptime(str(record.date_start), '%Y-%m-%d %H:%M:%S')
-                end_date = datetime.strptime(str(record.date), '%Y-%m-%d %H:%M:%S')
+                start_date = datetime.strptime(str(record.date_start), '%Y-%m-%d')
+                end_date = datetime.strptime(str(record.date), '%Y-%m-%d')
                 difference = timedelta(seconds=3600)
                 new_date = (end_date - start_date - difference) * 24
                 record.duration = int(new_date.days + 1) / 24
@@ -236,3 +236,4 @@ class LeaseManagement(models.Model):
             template = self.env.ref('property_management.payment_followups_template')
             template.sudo().send_mail(lease.id, force_send=True)
             lease.message_post(body=_('Payment Reminder sent to %s') % lease.sequence_number)
+

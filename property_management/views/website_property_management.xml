@@ -6,5 +6,4 @@
         <field name="parent_id" ref="website.main_menu"/>
         <field name="sequence">90</field>
     </record>
-
 </odoo>
