@@ -40,7 +40,7 @@
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" type="object" name="get_property"
                                 icon="fa-car">
-                            <field string="Properties" name="property_count" widget="statinfo"/>
+<!--                            <field string="Properties" name="property_count" widget="statinfo"/>-->
                         </button>
                     </div>
                     <field name="image" widget="image" class="oe_avatar" field_id="image_1920_0"/>

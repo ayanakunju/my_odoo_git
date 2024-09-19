@@ -20,6 +20,8 @@
         'views/website_property_management.xml',
         'views/website_template.xml',
         'views/redirect_template.xml',
+        'views/property_snippet_template.xml',
+        'views/property_templates.xml',
         'data/property_management_sequence.xml',
         'data/property_management_demo.xml',
         'data/email_template.xml',
@@ -31,9 +33,12 @@
             'property_management/static/src/js/action_manager.js',
         ],
         'web.assets_frontend':[
+            'property_management/static/src/js/dynamic_snippet.js',
             'property_management/static/src/css/website.css',
+            'property_management/static/src/xml/property_management_latest_templates.xml',
         ]
 
     },
     'application': True,
 }
+

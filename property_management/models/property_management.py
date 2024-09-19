@@ -26,7 +26,7 @@ class PropertyManagement(models.Model):
     state = fields.Selection(selection=[('draft', 'Draft'), ('rented', 'Rented'),
                                         ('leased', 'Leased'), ('sold', 'Sold')
                                         ], string='Status', required=True, copy=False, tracking=True, default='draft')
-    property_count = fields.Integer(compute='_compute_count')
+    # property_count = fields.Integer(compute='_compute_count')
     user_id = fields.Many2one('res.users', 'Current User', default=lambda self: self.env.user.id)
     group_id = fields.Many2one('res.groups', string='Group')
     is_readonly = fields.Boolean(compute='_compute_is_readonly')
@@ -38,10 +38,10 @@ class PropertyManagement(models.Model):
             if self.env.user.has_group('property_management.property_manager_access'):
                 record.is_readonly = False
 
-    def _compute_count(self):
-        for record in self:
-            record.property_count = (self.env['multiple.property'].search_count(
-                [('multiple_property_id', '=', self.id)]))
+    # def _compute_count(self):
+    #     for record in self:
+    #         record.property_count = (self.env['multiple.property'].search_count(
+    #             [('multiple_property_id', '=', self.id)]))
 
     def get_property(self):
         self.ensure_one()

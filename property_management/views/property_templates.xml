@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="property_category_template" name="Latest Properties">
+        <section class="dynamic_snippet">
+            <div class="ref-arrival-content">
+                <p class="ref-section_head ref-centerhead__underline ref-head--primary"
+                   style="color: #0d5272;">
+                    <h3 class="text-center">Latest Properties</h3>
+                </p>
+            </div>
+            <div id="top_property_carousel"/>
+        </section>
+    </template>
+</odoo>
+
