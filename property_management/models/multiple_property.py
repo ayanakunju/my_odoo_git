@@ -35,3 +35,4 @@ class MultipleProperty(models.Model):
             self.multiple_property_id.legal_amount = self.rental_amount
         else:
             self.multiple_property_id.rent = self.rental_amount
+

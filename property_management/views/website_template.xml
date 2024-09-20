@@ -118,7 +118,7 @@
             <div id="wrap">
                 <div class="container">
                     <div class="col-md-12">
-                        <h4 style="text-align: center; padding: 10px;"><t t-esc="property_record.name"/></h4>
+                        <h4 style="text-align: center; padding: 10px;"><t t-esc="property_record.property_name"/></h4>
                     </div>
                     <div>
                         <table style="margin: 10px auto;">
@@ -128,7 +128,6 @@
                                     <th>Rent Amount</th>
                                     <th>Lease Amount</th>
                                     <th>Built Date</th>
-<!--                                    <th>Address</th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -146,9 +145,6 @@
                                         <td style="text-align: center;">
                                             <t t-esc="property['date']"/>
                                         </td>
-<!--                                        <td>-->
-<!--                                            <t t-esc="property['street']"/>-->
-<!--                                        </td>-->
                                     </tr>
                                 </t>
                             </tbody>

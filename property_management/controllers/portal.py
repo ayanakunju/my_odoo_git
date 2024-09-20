@@ -24,4 +24,3 @@ class WebFormController(Controller):
             })],
         })
         return request.render("property_management.web_rent_thanks")
-

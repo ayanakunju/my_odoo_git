@@ -3,6 +3,8 @@
 import publicWidget from "@web/legacy/js/public/public_widget";
 import { jsonrpc } from "@web/core/network/rpc_service";
 import { renderToFragment } from "@web/core/utils/render";
+
+
 export function _chunk(array, size) {
     const result = [];
     for (let i = 0; i < array.length; i += size) {
@@ -24,7 +26,6 @@ publicWidget.registry.snippet_clicking_page = publicWidget.Widget.extend({
 
 });
 
-
 var TopSellingProperties = publicWidget.Widget.extend({
         selector: '.dynamic_snippet',
 
@@ -41,27 +42,7 @@ var TopSellingProperties = publicWidget.Widget.extend({
             })
         }
     });
+
 publicWidget.registry.property_list_snippet = TopSellingProperties;
 return TopSellingProperties;
 
-//var TopSellingProperties = publicWidget.Widget.extend({
-//        selector: '.dynamic_snippet',
-//         willStart: async function () {
-//            const data = await jsonrpc('/top_properties', {})
-//           this.property_values = data;
-//        },
-//
-//        start: function () {
-//            const refEl = this.$el.find("#top_property_carousel")
-//            console.log(refEl)
-//            var result = _.chunk(data['this.property_values'], 4)
-//            result[0].is_active = true
-////            const unique_id = Date.now()
-//            refEl.html(renderToFragment('property_management.property_management_carousel', {
-//                result
-//
-//            }))
-//            }
-//});
-//publicWidget.registry.dynamic_snippet = TopSellingProperties;
-//return TopSellingProperties;

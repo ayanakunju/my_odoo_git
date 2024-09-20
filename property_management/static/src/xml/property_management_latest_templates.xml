@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <t t-name="property_management.property_management_carousel">
     <div t-att-id="'property_carousel'+unique_id" class="container carousel slide" data-bs-ride="carousel"
          t-att-data-bs-interval="interval">
@@ -10,11 +11,11 @@
                             <div class="block span3 col-3">
                                 <div class="card-group">
                                     <div class="card" t-att-id="item.id">
-                                        <img class="card-img-top" loading="lazy" t-att-src="data['image_512']"
-<!--                                             t-attf-src="data:image/png;base64,{{item.image_1920}}"-->
+                                        <img class="card-img-top"
+                                             t-attf-src="data:image/png;base64,{{item.image}}"
                                          style="padding: 0px; margin: 0px; height: 160px; width:305px;"/>
                                         <div class="card-body">
-                                            <h5 class="card-title text-center" t-esc="item.name"/>
+                                            <h5 class="card-title text-center" t-esc="item.property_name"/>
                                         </div>
                                     </div>
                                 </div>
