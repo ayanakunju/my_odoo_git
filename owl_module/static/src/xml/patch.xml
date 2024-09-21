@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--<templates id="template" xml:space="preserve">-->
-<!--<t t-inherit="owl_module.input_box" t-inherit-mode="extension" owl="1">-->
-<!--    <xpath expr="//div[hasClass('inputDiv')]" position="inside">-->
-<!--        <div class="d-flex flex-grow-1 align-items-center ">-->
-<!--            <button class="btn border-0 round-pill" t-on-click="onClickPoll">click here</button>-->
-<!--        </div>-->
-<!--    </xpath>-->
-<!--</t>-->
-<!--</templates>-->
-
-
+<templates id="template" xml:space="preserve">
+    <t t-inherit="owl_module.input_box" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('input_div')]" position="inside">
+            <button  t-on-click="()=> this.demoFunctionPatch(1)">add</button>
+            <span><t t-esc="state.value"/></span>
+            <button  t-on-click="()=> this.demoFunctionPatch(-1)">del</button>
+            <button t-on-click="demofu" class="oe_stat_button">click here</button>
+            <button t-on-click="ormfunction" class="oe_stat_button">use service</button>
+            <button t-on-click="openform" class="oe_stat_button">do action</button>
+        </xpath>
+    </t>
+</templates>

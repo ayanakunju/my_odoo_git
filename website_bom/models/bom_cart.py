@@ -14,9 +14,7 @@ class BomCart(models.TransientModel):
 
     @api.model
     def get_values(self):
-        """
-        used to get the saved value when the settings form is loaded
-        """
+        """ it returns the saved values when loading the website"""
         res = super(BomCart, self).get_values()
         with_user = self.env['ir.config_parameter'].sudo()
         products = with_user.get_param('website_bom.bom_cart')
@@ -26,9 +24,7 @@ class BomCart(models.TransientModel):
 
 
     def set_values(self):
-        """
-        store the saved values of the configuration parameters
-         """
+        """stores the saved values of the config parameters"""
         res = super(BomCart, self).set_values()
         if self.is_bom_product:
                 self.env['ir.config_parameter'].sudo().set_param(

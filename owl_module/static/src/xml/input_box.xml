@@ -2,9 +2,9 @@
 
 <templates id="template" xml:space="preserve">
     <t t-name="owl_module.input_box">
-        <div class="inputDiv">
-        <input type="text" name="db" value=" " class="form-control"/>
-        <button class="oe_stat_button">click here</button>
+        <div class="input_div">
+        <input type="text" name="db" value=" " class="form-control" t-ref="inputbox12"/>
+<!--        <button class="oe_stat_button">click here</button>-->
         </div>
     </t>
 </templates>

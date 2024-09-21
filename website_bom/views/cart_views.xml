@@ -1,19 +1,40 @@
 <odoo>
-    <template id="cart_bom_description_inherit" inherit_id="website_sale.cart_lines">
-        <xpath expr="//div[@class='flex-grow-1']" position="inside">
-            <t t-if="line.product_id.bom_ids and request.env['res.config.settings'].sudo().get_values().get('product_ids') and
-            line.product_id.id in request.env['res.config.settings'].sudo().get_values().get('product_ids')[0][2]">
-              <div class="product-bom">
-                    <span>Bill of Materials:</span>
-                    <t t-foreach="line.product_id.bom_ids.bom_line_ids" t-as="bom_line">
-                        <a t-attf-href="/shop/{{ slug(bom_line.product_id.product_tmpl_id) }}">
+    <template id="bom_template" name="BOM Template">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Bills of Materials for
+                    <t t-esc="product.name"/>
+                </h1>
+                <ul>
+                    <t t-foreach="bom_lines" t-as="bom_line">
                         <li>
-                            <span t-esc="bom_line.product_id.name"/>
+                            <a t-att-href="/shop/{{ slug(bom_line.product_id.product_tmpl_id) }}">
+                                <t t-esc="bom_line.product_id.name"/>
+                            </a>
                         </li>
-                        </a>
                     </t>
-                </div>
-            </t>
-        </xpath>
+                </ul>
+            </div>
+        </t>
     </template>
 </odoo>
+
+<!--<odoo>-->
+<!--<template id="cart_bom_description_inherit" inherit_id="website_sale.cart_lines">-->
+<!--<xpath expr="//div[@class='flex-grow-1']" position="inside">-->
+<!--    <t t-if="line.product_id.bom_ids and request.env['res.config.settings'].sudo().get_values().get('product_ids') and-->
+<!--             line.product_id.id in request.env['res.config.settings'].sudo().get_values().get('product_ids')[0][2]">-->
+<!--        <div class="product-bom">-->
+<!--            <span>Bill of Materials:</span>-->
+<!--            <t t-foreach="line.product_id.bom_ids.bom_line_ids" t-as="bom_line">-->
+<!--                <a t-attf-href="/shop/{{ slug(bom_line.product_id.product_tmpl_id) }}">-->
+<!--                    <li>-->
+<!--                        <span t-esc="bom_line.product_id.name"/>-->
+<!--                    </li>-->
+<!--                </a>-->
+<!--            </t>-->
+<!--        </div>-->
+<!--    </t>-->
+<!--</xpath>-->
+<!--</template>-->
+<!--</odoo>-->

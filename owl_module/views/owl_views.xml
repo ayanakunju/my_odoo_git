@@ -4,8 +4,6 @@
         <field name="name">Advanced Dashboard</field>
          <field name="tag">advanced_dashboard</field>
     </record>
-
         <menuitem name="dashboard" id="advanced_dashboard_menu" sequence="1" action="advanced_dashboard_action">
         </menuitem>
-
 </odoo>

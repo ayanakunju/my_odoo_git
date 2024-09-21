@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form//block[@id='website_info_settings']"
                    position="after">
-                <block title="Website Task" id="website_task">
+                <block title="Website BOM" id="website_bom">
                     <setting>
                         <field name="is_bom_product"/>
                         <label class="col-lg-3" string="Products"
@@ -22,4 +22,3 @@
         </field>
     </record>
 </odoo>
-
