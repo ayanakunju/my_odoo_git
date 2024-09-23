@@ -13,6 +13,14 @@
     'data': [
             'views/product_brand.xml',
         ],
+
+    'assets': {
+        'point_of_sale._assets_pos': [
+            'pos_product_brand/static/src/js/pos_order_line.js',
+            'pos_product_brand/static/src/xml/pos_order_line.xml',
+            'pos_product_brand/static/src/xml/product_info.xml',
+        ]
+    },
     'application': True,
 
 }

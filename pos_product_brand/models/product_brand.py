@@ -2,7 +2,8 @@
 
 from odoo import models, fields
 
-class ProductTemplate(models.Model):
+
+class ProductBrand(models.Model):
     _inherit = 'product.product'
 
-    brand_id = fields.Char(string='Product Brand')
+    product_brand = fields.Char(string='Product Brand')
