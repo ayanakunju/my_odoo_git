@@ -1,0 +1,25 @@
+/*
+Version: 3.5.1 Timestamp: Tue Jul 22 18:58:56 EDT 2014
+*/
+
+.product-discount-tag {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    text-align: center;
+    border-width: 0 40px 40px 0;
+    border-color: transparent red transparent transparent;
+    position : absolute;
+    transform: rotateZ(-0.25turn);
+
+    }
+.text{
+    font-size: 11px;
+    position : absolute;
+    padding-top:0px;
+    color: white;
+    padding-bottom:20px;
+    font-weight: bold;
+    padding-right:15px;
+    transform:rotateZ(0.25turn);
+}

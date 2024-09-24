@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="product_discount.product_widget_discount_pos"
+       t-inherit="point_of_sale.ProductsWidget" t-inherit-mode="extension">
+    <xpath expr="//ProductCard" position="attributes">
+        <attribute name="product_discount" add="product.product_discount"/>
+    </xpath>
+    </t>
+</templates>
