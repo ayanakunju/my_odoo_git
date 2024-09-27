@@ -16,11 +16,10 @@
 
     'assets': {
         'point_of_sale._assets_pos': [
-    #         'pos_discount_tag/static/src/js/discount_order_line.js',
-    #         'pos_discount_tag/static/src/xml/discount_order_line.xml',
-    #         'pos_discount_tag/static/src/xml/product_card_inherit.xml',
-    #         'pos_discount_tag/static/src/xml/product_widget_inherit.xml',
-    #         'pos_discount_tag/static/src/css/product_card.css',
+            'pos_due_limit/static/src/js/pos_due_limit.js',
+            'pos_due_limit/static/src/xml/pos_due_limit.xml',
+            'pos_due_limit/static/src/css/pos_due_limit.css',
+
         ]
     },
     'application': True,

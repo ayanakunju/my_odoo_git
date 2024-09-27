@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="due_limit.order_due_limit" t-inherit="point_of_sale.PaymentScreenMethods" t-inherit-mode="extension">
+       <xpath expr="//div[hasclass('paymentmethods')]" position="after">
+            <div class="due-limit">
+           <t t-if="currentOrder.partner.due_limit">
+               <span>Due Limit: <t t-esc="currentOrder.partner.due_limit"/></span>
+           </t></div>
+       </xpath>
+   </t>
+</templates>
