@@ -11,7 +11,7 @@
         'views/payment_paytrail_template.xml',
         'views/payment_provider_views.xml',
 
-        # 'data/payment_method_data.xml',
+        'data/payment_method_data.xml',
         'data/payment_provider_data.xml',
     ],
 

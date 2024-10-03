@@ -66,10 +66,6 @@ class PaymentProvider(models.Model):
         hmac_str += f"\n{data}"
         payload = json.dumps(data, separators=(",", ":"))
         signature = self.calculate_hmac(self, self.paytrail_secret_key, headers, payload)
-        # signature = hmac.new(self.paytrail_secret_key.encode("utf-8"),
-        #                      hmac_str.encode("utf-8"),
-        #                      hashlib.sha256).hexdigest()
-        # signature = hmac.new(base64.b32encode(self.paytrail_secret_key),self.paytrail_merchant_id,hashlib.sha256)
         print("hhhhmanc")
 
 
@@ -124,3 +120,5 @@ class PaymentProvider(models.Model):
 
 # • Merchant ID: 375917
 # • Secret key: SAIPPUAKAUPPIAS
+
+# . 4153 0139 9970 0313	 11/2026	313
