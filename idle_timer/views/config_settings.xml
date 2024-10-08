@@ -10,12 +10,10 @@
                    position="after">
                 <block title="Quiz Timer" id="quiz_timer">
                     <setting>
-                        <label class="col-lg-3" string="Default Timer" for="timer"/>
-                        <field name="timer"/>
-                        <br></br>
-                        <br></br>
+                        <div>
                         <label class="col-lg-3" string="Redirect Timer" for="redirect_time"/>
-                        <field name="redirect_time" string="Redirect Timer"/>
+                        <field name="redirect_time" string="Redirect Timer"
+                               widget="float_time" class="oe_inline"/>minutes</div>
                     </setting>
                 </block>
             </xpath>

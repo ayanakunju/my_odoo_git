@@ -7,13 +7,18 @@
     'author': "Author Name",
     'category': 'Category',
     'description': """
-        This module et an idle timer for the quiz, and accessible from the survey module.
+        This module gives an idle timer for the quiz, and accessible from the survey module.
     """,
 
     'data': [
             'views/config_settings.xml',
+            'views/survey_timer.xml',
         ],
-
+    'assets': {
+        'survey.survey_assets': [
+            'idle_timer/static/src/js/survey_timer.js'
+        ],
+    },
     'application': True,
 
 }
