@@ -9,11 +9,17 @@
             <xpath expr="//form//block[@name='users_setting_container']"
                    position="after">
                 <block title="Quiz Timer" id="quiz_timer">
+                     <setting>
+                        <div>
+                            <label class="col-lg-3" string="Idle Time" for="idle_time"/>
+                            <field name="idle_time" widget="float_time" class="oe_inline"/>minutes
+                        </div>
+                    </setting>
                     <setting>
                         <div>
-                        <label class="col-lg-3" string="Redirect Timer" for="redirect_time"/>
-                        <field name="redirect_time" string="Redirect Timer"
-                               widget="float_time" class="oe_inline"/>minutes</div>
+                            <label class="col-log-3" string="Redirect Timer" for="idle_seconds" invisible="True"/> &#160;
+                            <field name="idle_seconds" invisible="True" class="oe_inline"/>
+                        </div>
                     </setting>
                 </block>
             </xpath>

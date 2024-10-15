@@ -3,7 +3,7 @@
 {
     'name': "Idle Timer",
     'version': '17.0.3.0.0',
-    'depends': ['base','survey'],
+    'depends': ['base', 'survey'],
     'author': "Author Name",
     'category': 'Category',
     'description': """
@@ -11,14 +11,16 @@
     """,
 
     'data': [
-            'views/config_settings.xml',
-            'views/survey_timer.xml',
-        ],
+        'views/survey_timer.xml',
+        'views/config_settings.xml',
+    ],
+
     'assets': {
         'survey.survey_assets': [
-            'idle_timer/static/src/js/survey_timer.js'
+            'idle_timer/static/src/js/idle_timer.js'
         ],
     },
     'application': True,
+    'license': 'LGPL-3'
 
 }

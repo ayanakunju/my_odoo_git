@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import  fields, models
 
 
 class IdleSurvey(models.TransientModel):
     _inherit = 'res.config.settings'
 
-    redirect_time = fields.Float(string='Redirect time (minutes)', config_parameter='idle_timer.config_settings')
-
-
-class SurveyQuiz(models.Model):
-    _inherit = 'survey.survey'
-
-    @api.model
-    def get_values(self):
-        redirect_time = self.env['res.config.settings'].search_read([], ['redirect_time'])
-        return redirect_time
+    idle_time = fields.Float(string='Idle Time (minutes)', config_parameter='idle_timer.idle_time')
+    idle_seconds = fields.Integer(string="Idle Time", store=True, config_parameter='quiz_idle_timer.idle_seconds')

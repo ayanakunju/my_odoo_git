@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="survey_fill_header" inherit_id="survey.survey_fill_header">
-        <xpath expr="//div[hasclass('o_survey_timer')]" position="after">
-            <div>
-                <h1>abccccc</h1>
+        <xpath expr="//div[hasclass('o_survey_timer')]"
+               position="after">
+            <div class="new_icon">
+                <div id="div-timer">
+                    <h1 id="idle_timer"/>
+                </div>
             </div>
         </xpath>
     </template>
